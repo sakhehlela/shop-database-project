@@ -1,18 +1,17 @@
-version: "3.3"
-services:
-  postgres:
-    image: postgres:9.6
-    environment:
-      - POSTGRES_USER=sakhehlela
-      - POSTGRES_PASSWORD=pass
-      - POSTGRES_DB=shop
-    volumes:
-      - ./gitignore/postgresql:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+version: '3.3'  
 
-  adminer:
-    image: adminer
-    restart: always
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
     ports:
-      - 8080:8080
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - /home/umuzi-recruit/Desktop/Umuzi/Sakhe-Hlela-200-sql-/src:/src:rw
+volumes:
+  postgres_data:
+    driver: local
