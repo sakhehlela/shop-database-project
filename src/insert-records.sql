@@ -1,3 +1,4 @@
+-- Insert data into Customers table
 INSERT INTO Customers (FirstName, LastName, Gender, Address, Phone, Email, City, Country)
 VALUES
 ('John', 'Hibert', 'Male', '284 chaucer st', '084789657', 'john@gmail.com', 'Johannesburg', 'South Africa'),
@@ -6,24 +7,28 @@ VALUES
 ('Charl', 'Muller', 'Male', '290A Dorset Ecke', '+44856872553', 'Charl.muller@yahoo.com', 'Berlin', 'Germany'),
 ('Julia', 'Stein', 'Female', '2 Wernerring', '+448672445058', 'Js234@yahoo.com', 'Frankfurt', 'Germany');
 
+-- Insert data into Employees table
 INSERT INTO Employees (FirstName, LastName, Email, JobTitle)
 VALUES
 ('Kani', 'Matthew', 'mat@gmail.com', 'Manager'),
 ('Lesly', 'Cronje', 'LesC@gmail.com', 'Clerk'),
 ('Gideon', 'Maduku', 'm@gmail.com', 'Accountant');
 
+-- Insert data into Products table
 INSERT INTO Products (ProductName, Description, BuyPrice)
 VALUES
 ('Harley Davidson Chopper', 'This replica features a working kickstand, front suspension, gear-shift lever', 150.75),
 ('Classic Car', 'Turnable front wheels, steering function', 550.75),
 ('Sportscar', 'Turnable front wheels, steering function', 700.60);
 
+-- Insert data into Payments table
 INSERT INTO Payments (CustomerID, PaymentDate, Amount)
 VALUES
 (1, '2018-09-01', 150.75),
 (5, '2018-09-03', 150.75),
 (4, '2018-09-03', 700.60);
 
+-- Insert data into Orders table
 INSERT INTO Orders (ProductID, PaymentID, FulfilledByEmployeeID, DateRequired, DateShipped, Status)
 VALUES
 (1, 1, 2, '2018-09-05', NULL, 'Not shipped'),

@@ -1,9 +1,11 @@
+-- Drop tables if they exist
 DROP TABLE IF EXISTS Orders;
 DROP TABLE IF EXISTS Payments;
 DROP TABLE IF EXISTS Products;
 DROP TABLE IF EXISTS Employees;
 DROP TABLE IF EXISTS Customers;
 
+-- Create Customers table
 CREATE TABLE Customers (
     ID SERIAL PRIMARY KEY,
     FirstName VARCHAR(50),
@@ -16,6 +18,7 @@ CREATE TABLE Customers (
     Country VARCHAR(50)
 );
 
+-- Create Employees table
 CREATE TABLE Employees (
     ID SERIAL PRIMARY KEY,
     FirstName VARCHAR(50),
@@ -24,6 +27,7 @@ CREATE TABLE Employees (
     JobTitle VARCHAR(20)
 );
 
+-- Create Products table
 CREATE TABLE Products (
     ID SERIAL PRIMARY KEY,
     ProductName VARCHAR(100),
@@ -31,6 +35,7 @@ CREATE TABLE Products (
     BuyPrice DECIMAL
 );
 
+-- Create Payments table
 CREATE TABLE Payments (
     ID SERIAL PRIMARY KEY,
     CustomerID INT,
@@ -39,6 +44,7 @@ CREATE TABLE Payments (
     FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
 );
 
+-- Create Orders table
 CREATE TABLE Orders (
     ID SERIAL PRIMARY KEY,
     ProductID INT,
