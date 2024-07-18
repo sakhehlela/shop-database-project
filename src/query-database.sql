@@ -1,53 +1,53 @@
-SELECT * FROM Customers;
--- Select all records from the Customers table
-SELECT * FROM Customers;
+\c shop;
 
--- Select only the FirstName and LastName columns from the Customers table
-SELECT FirstName, LastName FROM Customers;
+-- 1. Select all records from customers table
+SELECT * FROM customers;
 
--- Show the full name of the Customer whose CustomerID is 1
-SELECT FirstName || ' ' || LastName AS FullName FROM Customers WHERE ID = 1;
+-- 2. Select only the name columns from the customers table
+SELECT first_name, last_name FROM customers;
 
--- Update the record for CustomerID = 1 on the Customers table so that the name is “Lerato Mabitso”
-UPDATE Customers SET FirstName = 'Lerato', LastName = 'Mabitso' WHERE ID = 1;
+-- 3. Show the full name of the customer whose customer_id is 1
+SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM customers WHERE id = 1;
 
--- Delete the record from the Customers table for customer 2 (CustomerID = 2)
-DELETE FROM Customers WHERE ID = 2;
+-- 4. Update the record for customer_id = 1 on the customers table so that the name is “lerato mabitso”
+UPDATE customers SET first_name = 'lerato', last_name = 'mabitso' WHERE id = 1;
 
--- Select all unique statuses from the Orders table and get a count of the number of orders for each unique status
-SELECT Status, COUNT(*) FROM Orders GROUP BY Status;
+-- 5. Delete the record from the customers table for customer_id = 2
+DELETE FROM customers WHERE id = 2;
 
--- Return the MAXIMUM payment made on the Payments table
-SELECT MAX(Amount) FROM Payments;
+-- 6. Select all unique statuses from the orders table and get a count of the number of orders for each unique status
+SELECT status, COUNT(*) FROM orders GROUP BY status;
 
--- Select all customers from the Customers table, sorted by the Country column
-SELECT * FROM Customers ORDER BY Country;
+-- 7. Return the maximum payment made on the payments table
+SELECT ROUND(MAX(amount), 2) FROM payments;
 
--- Select all products with a price BETWEEN R100 and R600
-SELECT * FROM Products WHERE BuyPrice BETWEEN 100 AND 600;
+-- 8. Select all customers from the customers table, sorted by the country column
+SELECT * FROM customers ORDER BY country;
 
--- Select all fields from Customers where the country is Germany AND the city is Berlin
-SELECT * FROM Customers WHERE Country = 'Germany' AND City = 'Berlin';
+-- 9. Select all products with a price between 100 and 600
+SELECT * FROM products WHERE buy_price BETWEEN 100 AND 600;
 
--- Select all fields from Customers where the city is Cape Town OR Durban
-SELECT * FROM Customers WHERE City IN ('Cape Town', 'Durban');
+-- 10. Select all fields from customers where the country is 'germany' AND the city is 'berlin'
+SELECT * FROM customers WHERE country = 'germany' AND city = 'berlin';
 
--- Select all records from Products where the Price is GREATER than R500
-SELECT * FROM Products WHERE BuyPrice > 500;
+-- 11. Select all fields from customers where the city is 'cape town' OR 'durban'
+SELECT * FROM customers WHERE city IN ('cape town', 'durban');
 
--- Return the sum of the Amounts on the Payments table
-SELECT SUM(Amount) FROM Payments;
+-- 12. Select all records from products where the price is greater than 500
+SELECT * FROM products WHERE buy_price > 500;
 
--- Count the number of shipped orders in the Orders table
-SELECT COUNT(*) FROM Orders WHERE Status = 'Shipped';
+-- 13. Return the sum of the amounts on the payments table
+SELECT ROUND(SUM(amount), 2) FROM payments;
 
--- Return the average price of all Products, in Rands and Dollars (assume the exchange rate is R12 to the Dollar)
-SELECT AVG(BuyPrice) AS AveragePriceInRands, AVG(BuyPrice) / 12 AS AveragePriceInDollars FROM Products;
+-- 14. Count the number of shipped orders in the orders table
+SELECT COUNT(*) FROM orders WHERE status = 'shipped';
 
--- Using INNER JOIN create a query that selects all Payments with Customer information
-SELECT Payments.*, Customers.FirstName, Customers.LastName 
-FROM Payments
-INNER JOIN Customers ON Payments.CustomerID = Customers.ID;
+-- 15. Return the average price of all products, in rands and dollars (assume the exchange rate is 12 to the dollar)
+SELECT ROUND(AVG(buy_price), 2) AS average_price_in_rands, ROUND(AVG(buy_price) / 12, 2) AS average_price_in_dollars FROM products;
 
--- Select all products that have turnable front wheels
-SELECT * FROM Products WHERE Description LIKE '%Turnable front wheels%';
+-- 16. Using INNER JOIN create a query that selects all payments with customer information
+SELECT payments.*, customers.first_name, customers.last_name FROM payments
+INNER JOIN customers ON payments.customer_id = customers.id;
+
+-- 17. Select all products that have turnable front wheels
+SELECT * FROM products WHERE description LIKE '%turnable front wheels%';

@@ -1,59 +1,54 @@
--- Drop tables if they exist
-DROP TABLE IF EXISTS Orders;
-DROP TABLE IF EXISTS Payments;
-DROP TABLE IF EXISTS Products;
-DROP TABLE IF EXISTS Employees;
-DROP TABLE IF EXISTS Customers;
+DROP TABLE IF EXISTS
+    customers,
+    employees,
+    products,
+    payments,
+    orders CASCADE;
 
--- Create Customers table
-CREATE TABLE Customers (
-    ID SERIAL PRIMARY KEY,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    Gender VARCHAR(10),
-    Address VARCHAR(200),
-    Phone VARCHAR(20),
-    Email VARCHAR(100),
-    City VARCHAR(20),
-    Country VARCHAR(50)
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    address VARCHAR(200),
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    city VARCHAR(20) NOT NULL,
+    country VARCHAR(50) NOT NULL
 );
 
--- Create Employees table
-CREATE TABLE Employees (
-    ID SERIAL PRIMARY KEY,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    Email VARCHAR(100),
-    JobTitle VARCHAR(20)
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    job_title VARCHAR(20) NOT NULL
 );
 
--- Create Products table
-CREATE TABLE Products (
-    ID SERIAL PRIMARY KEY,
-    ProductName VARCHAR(100),
-    Description VARCHAR(300),
-    BuyPrice DECIMAL
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    description VARCHAR(300),
+    buy_price DECIMAL NOT NULL
 );
 
--- Create Payments table
-CREATE TABLE Payments (
-    ID SERIAL PRIMARY KEY,
-    CustomerID INT,
-    PaymentDate TIMESTAMP,
-    Amount DECIMAL,
-    FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
+CREATE TABLE payments (
+    id SERIAL PRIMARY KEY,
+    customer_id INT NOT NULL,
+    payment_date TIMESTAMP NOT NULL,
+    amount DECIMAL NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
 
--- Create Orders table
-CREATE TABLE Orders (
-    ID SERIAL PRIMARY KEY,
-    ProductID INT,
-    PaymentID INT,
-    FulfilledByEmployeeID INT,
-    DateRequired TIMESTAMP,
-    DateShipped TIMESTAMP,
-    Status VARCHAR(20),
-    FOREIGN KEY (ProductID) REFERENCES Products(ID),
-    FOREIGN KEY (PaymentID) REFERENCES Payments(ID),
-    FOREIGN KEY (FulfilledByEmployeeID) REFERENCES Employees(ID)
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    product_id INT NOT NULL,
+    payment_id INT NOT NULL,
+    fulfilled_by_employee_id INT NOT NULL,
+    date_required TIMESTAMP NOT NULL,
+    date_shipped TIMESTAMP,
+    status VARCHAR(20) NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products(id),
+    FOREIGN KEY (payment_id) REFERENCES payments(id),
+    FOREIGN KEY (fulfilled_by_employee_id) REFERENCES employees(id)
 );
