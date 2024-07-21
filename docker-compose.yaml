@@ -1,25 +1,20 @@
-version: '3.3'
-
+version: "3.3"
 services:
-  db:
-    image: postgres:latest
+  postgres:
+    image: postgres:9.6
     environment:
-      POSTGRES_USER: sakhehlela
-      POSTGRES_PASSWORD: Docker2025!
-      POSTGRES_DB: shop
-    ports:
-      - "5432:5432"
+      - POSTGRES_USER=sakhehlela
+      - POSTGRES_PASSWORD=Docker2025!
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - /home/umuzi-recruit/Desktop/Umuzi/Sakhe-Hlela-200-sql-/src:/src:rw
+      - ./postgres_data/postgresql:/var/lib/postgresql/data
+      - ./src:/docker-entrypoint-initdb.d
+
+    ports:
+      - 5432:5432
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - "8080:8080"
-
-volumes:
-  postgres_data:
-    driver: local
+      - 8080:8080
 

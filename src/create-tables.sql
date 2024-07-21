@@ -1,3 +1,5 @@
+\c shop;
+
 DROP TABLE IF EXISTS
     customers,
     employees,
@@ -10,15 +12,15 @@ CREATE TABLE customers (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     gender VARCHAR(10) NOT NULL,
-    address VARCHAR(200),
-    phone VARCHAR(20),
-    email VARCHAR(100),
+    address VARCHAR(200) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     city VARCHAR(20) NOT NULL,
     country VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE employees (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
@@ -26,14 +28,14 @@ CREATE TABLE employees (
 );
 
 CREATE TABLE products (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY NOT NULL,
     product_name VARCHAR(100) NOT NULL,
-    description VARCHAR(300),
+    description VARCHAR(300) NOT NULL,
     buy_price DECIMAL NOT NULL
 );
 
 CREATE TABLE payments (
-    id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY NOT NULL,
     customer_id INT NOT NULL,
     payment_date TIMESTAMP NOT NULL,
     amount DECIMAL NOT NULL,

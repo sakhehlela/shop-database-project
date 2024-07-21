@@ -1,5 +1,9 @@
 # Shop Database Documentation
 
+## How to run the project
+You can run this project by running sudo docker-compose up
+Go to http://localhost:8080
+
 ## Tables and Information
 
 ### Customers Table
