@@ -1,10 +1,15 @@
 \c shop;
 
 -- 1. Select all records from customers table
-SELECT * FROM customers;
+SELECT 
+    * 
+FROM customers;
 
 -- 2. Select only the name columns from the customers table
-SELECT first_name, last_name FROM customers;
+SELECT 
+    first_name, 
+    last_name 
+FROM customers;
 
 -- 3. Show the full name of the customer whose customer_id is 1
 SELECT CONCAT(first_name, ' ', last_name) AS full_name 
@@ -17,8 +22,9 @@ SET first_name = 'lerato', last_name = 'mabitso'
 WHERE id = 1;
 
 -- 5. Delete the record from the customers table for customer_id = 2
-DELETE FROM customers WHERE id = 2;
-
+DELETE FROM 
+    customers 
+WHERE id = 2;
 -- 6. Select all unique statuses from the orders table and get a count of the number of orders for each unique status
 SELECT status, COUNT(*) 
 FROM orders 
