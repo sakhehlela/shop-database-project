@@ -28,6 +28,6 @@ VALUES
 
 INSERT INTO orders (product_id, payment_id, fulfilled_by_employee_id, date_required, date_shipped, status)
 VALUES 
-(1, 1, 2, '2018-09-05', NULL, 'not shipped'),
-(1, 2, 2, '2018-09-04', '2018-09-03', 'shipped'),
-(3, 3, 3, '2018-09-06', NULL, 'not shipped');
+(1, 1, 2, '05-09-2018', NULL, 'Not shipped'),
+(1, 2, 2, '04-09-2018', '03-09-2018', 'Shipped'),
+(3, 3, 3, '06-09-2018	', NULL, 'Not shipped');

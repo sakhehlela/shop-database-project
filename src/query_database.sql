@@ -7,8 +7,7 @@ FROM customers;
 
 -- 2. Select only the name columns from the customers table
 SELECT 
-    first_name, 
-    last_name 
+    first_name 
 FROM customers;
 
 -- 3. Show the full name of the customer whose customer_id is 1
