@@ -65,7 +65,7 @@ FROM payments;
 -- 14. Count the number of shipped orders in the orders table
 SELECT COUNT(*) AS shipped_orders_count 
 FROM orders 
-WHERE status = 'shipped';
+WHERE status = 'Shipped';
 
 -- 15. Return the average price of all products, in rands and dollars (assume the exchange rate is 12 to the dollar)
 SELECT ROUND(AVG(buy_price), 2) AS average_price_in_rands, 
@@ -80,4 +80,4 @@ INNER JOIN customers ON payments.customer_id = customers.id;
 -- 17. Select all products that have turnable front wheels
 SELECT * 
 FROM products 
-WHERE description LIKE '%turnable front wheels%';
+WHERE description ILIKE '%turnable front wheels%';
